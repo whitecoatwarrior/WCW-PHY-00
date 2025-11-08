@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuJD-NddcLbcaap_utAGs0yXcuVjaDFOUZn9SC1Cjs9h9jLrtGAiaiHDPq7e7H3tkZOg/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_CHE_0011 = [
+    {
+        question: "The comprehensive field of chemical kinetics primarily focuses on three interconnected aspects. Which of the following best encapsulates these core inquiries?",
+        options: [
+            "The change in enthalpy, entropy, and Gibbs free energy of reactions.",
+            "The equilibrium position, spontaneity, and product yield of chemical transformations.",
+            "The detailed atomic structure of reactants, products, and their bond energies.",
+            "The velocity of reactions, the influential conditions, and the sequential pathway of events."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under the introduction to chemical kinetics, defining its scope as studying the speed (rate) of reactions, factors affecting rates, and the detailed mechanism."
+    },
+    {
+        question: "When monitoring a chemical reaction, a researcher observes a steady decline in the concentration of a specific reactant over time. To ensure that the calculated reaction rate remains a positive value, how must the change in this reactant's concentration be incorporated into the rate expression?",
+        options: [
+            "It must be multiplied by negative one before dividing by the time interval.",
+            "It is directly divided by the time interval, accepting a negative rate as indicative of consumption.",
+            "The absolute value of the concentration change is used before dividing by the time interval.",
+            "The initial concentration is always subtracted from the final concentration, irrespective of the sign."
+        ],
+        correctAnswer: 0,
+        reasoning: "It is mentioned in textbook theory that for reactants, the rate is expressed as -Δ[Reactant]/Δt, where the negative sign ensures the overall rate value is positive, as reactant concentration decreases."
+    },
+    {
+        question: "A chemist observes that the rate of a particular reaction is significantly high immediately after mixing reactants but gradually diminishes as the reaction progresses, eventually ceasing. This phenomenon is best explained by the continuous alteration of which factor?",
+        options: [
+            "The reaction's overall enthalpy change.",
+            "The activation energy barrier for the process.",
+            "The instantaneous concentrations of the reacting species.",
+            "The presence of an accumulating reaction intermediate."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Rate Over Time', stating that the reaction rate is typically high initially due to high reactant concentrations and decreases as reactants are consumed."
+    },
+    {
+        question: "Consider two different chemical transformations: one involving the precipitation of ions in an aqueous solution, and another involving the rearrangement and breaking of multiple covalent bonds in an organic molecule. Which intrinsic property of the reactants is most likely responsible for the observation that one reaction proceeds significantly faster than the other under similar conditions?",
+        options: [
+            "Their respective molar masses.",
+            "The fundamental nature and bonding characteristics of the substances involved.",
+            "The specific volume occupied by the reactants.",
+            "Their ability to absorb visible light."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Nature of the Reactants', stating that the type and number of bonds to be broken and formed, and their strength, significantly influence the reaction rate, with ionic compounds reacting faster than covalent compounds."
+    },
+    {
+        question: "In a reaction system where a solid reactant is involved, a noticeable acceleration of the reaction rate is achieved by increasing the extent of its finely divided state. This effect is primarily attributed to a consequent increase in which physical parameter?",
+        options: [
+            "The material's bulk density.",
+            "The average kinetic energy of the solid particles.",
+            "The number of moles of the solid reactant present.",
+            "The total accessible surface area for interaction."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Particle Size of a Solid Reacting in Heterogeneous Reactions', explaining that smaller particles provide a greater total surface area exposed for reaction, increasing contact points."
+    },
+    {
+        question: "When the temperature of a reacting system is elevated, it leads to a more pronounced increase in reaction rate than merely increasing collision frequency. The more significant contribution to this rate enhancement stems from an increase in the proportion of molecules possessing which critical characteristic?",
+        options: [
+            "Kinetic energy equal to or surpassing the activation energy.",
+            "Translational motion capable of overcoming solvent resistance.",
+            "Rotational energy states aligned for specific bond formation.",
+            "Vibrational energy sufficient to break weaker existing bonds."
+        ],
+        correctAnswer: 0,
+        reasoning: "This is mentioned in textbook theory under 'Temperature', specifically stating that a higher temperature increases the proportion of molecules that possess kinetic energy equal to or greater than the activation energy (Ea), making more collisions effective."
+    },
+    {
+        question: "A substance is introduced into a reaction mixture, and it is observed that the reaction proceeds much faster, yet at the completion of the reaction, the substance can be recovered quantitatively in its original chemical form. This substance is best categorized by its impact on which specific energetic hurdle of the reaction?",
+        options: [
+            "The overall enthalpy change of the reaction.",
+            "The kinetic energy required for molecular vibrational modes.",
+            "The minimum energy required to reach the transition state.",
+            "The internal energy of the reactant molecules."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is implicitly mentioned in textbook theory under 'Presence or Absence of a Catalyst', where catalysts increase reaction rates without being consumed, and the mechanism (implicit) is stated to be lowering the activation energy, which is defined as the minimum energy to reach the transition state."
+    },
+    {
+        question: "The chemical decomposition of hydrogen peroxide can be significantly accelerated when exposed to ambient light, while in darkness, it proceeds much slower. This observation primarily indicates that the reaction's initiation and progression are directly influenced by the absorption of which form of energy by the reactant molecules?",
+        options: [
+            "Thermal energy from surrounding air.",
+            "Electromagnetic radiation at specific wavelengths.",
+            "Mechanical energy from agitation.",
+            "Chemical potential energy from trace impurities."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Light (Photochemical Reactions)', which defines these reactions as influenced by the absorption of light energy, with reactant molecules getting activated by absorbing photons."
+    },
+    {
+        question: "On a potential energy diagram for a chemical reaction, a prominent 'hill' or 'barrier' must be overcome for reactants to transform into products. The magnitude of this barrier is a direct measure of which critical energetic requirement for the reaction to proceed?",
+        options: [
+            "The total energy released or absorbed by the reaction.",
+            "The stability of the reaction products.",
+            "The overall spontaneity of the reaction at equilibrium.",
+            "The minimum kinetic energy reactants must possess for effective collision."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Activation Energy (Ea)', stating that the 'energy barrier' represents the activation energy, which is also defined as the minimum collision energy required for a reaction to occur."
+    },
+    {
+        question: "Within the reaction pathway depicted on a potential energy diagram, there exists a momentary, high-energy configuration of atoms where existing bonds are simultaneously stretching and breaking while new bonds are beginning to form. This ephemeral configuration is best described as which unstable species?",
+        options: [
+            "The activated complex.",
+            "A stable reaction intermediate.",
+            "A transient product molecule.",
+            "An unreacted reactant molecule in an excited state."
+        ],
+        correctAnswer: 0,
+        reasoning: "This is mentioned in textbook theory under 'Activated Complex', defining it as the specific chemical species that exists at the transition state, where bonds are simultaneously breaking and forming, and it is highly unstable."
+    },
+    {
+        question: "An activated complex, by its very nature, cannot be isolated or characterized through conventional analytical techniques. This fundamental limitation arises from its intrinsic property of having an extremely short existence, directly linked to its state of high energy and instability. Which of the following describes this critical characteristic?",
+        options: [
+            "It readily participates in reverse reactions.",
+            "Its formation is always endothermic.",
+            "It possesses an exceedingly brief lifespan.",
+            "It represents a state of local energy minimum."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Activated Complex', stating it has a very short lifespan and cannot be isolated because it is highly unstable."
+    },
+    {
+        question: "According to the collision theory, for a molecular encounter between reactant species to successfully lead to product formation, simply colliding is insufficient. Beyond mere contact, what two crucial conditions must simultaneously be met for the collision to be considered 'effective'?",
+        options: [
+            "Their physical state must be identical, and their volume must be negligible.",
+            "They must possess sufficient kinetic energy and exhibit a specific spatial orientation.",
+            "They must be in a gaseous state and have equivalent electronegativities.",
+            "Their bond energies must be lower than the products, and their size must be similar."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Collision Theory', which states that reactant molecules must collide with sufficient energy to overcome the activation energy barrier and collide with the correct orientation."
+    },
+    {
+        question: "A chemist determines an experimental equation that quantitatively relates the observed speed of a reaction to the prevailing concentrations of the reacting species. This empirically derived expression is universally known by what specific term in chemical kinetics?",
+        options: [
+            "The stoichiometry equation.",
+            "The equilibrium constant expression.",
+            "The mass balance equation.",
+            "The rate law."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Rate Law (Rate Equation)', defining it as an experimentally determined equation that expresses the relationship between the rate of a reaction and the concentrations of the reactants."
+    },
+    {
+        question: "The proportionality constant found in the rate law equation for a given reaction possesses several key characteristics. Which of the following statements about this constant is universally true?",
+        options: [
+            "It is invariant with temperature changes.",
+            "It is independent of the reactant concentrations.",
+            "It can adopt a negative value under specific conditions.",
+            "Its value is directly proportional to reaction time."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Rate Constant (k)', stating it is independent of reactant concentrations and time."
+    },
+    {
+        question: "For a chemical reaction exhibiting zero-order kinetics, how would the units of its rate constant be correctly expressed?",
+        options: [
+            "Per second (s⁻¹).",
+            "Cubic decimeters per mole per second (dm³ mol⁻¹ s⁻¹).",
+            "Moles per cubic decimeter per second (mol dm⁻³ s⁻¹).",
+            "Per square second (s⁻²)."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Units of k', explicitly stating that for zero order, the units are mol dm⁻³ s⁻¹."
+    },
+    {
+        question: "The order of a chemical reaction, which describes how the rate depends on reactant concentrations, is a critical parameter. The determination of this value for any given reaction can only be achieved through which specific approach?",
+        options: [
+            "Calculation from the overall stoichiometric coefficients of the balanced equation.",
+            "Empirical measurement through experimental data analysis.",
+            "Prediction from the theoretical bond energies of the reactants.",
+            "Derivation from the standard enthalpy and entropy values."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Order of Reaction', stating that it is 'Strictly experimental and cannot be predicted from the stoichiometric coefficients of the balanced chemical equation'."
+    },
+    {
+        question: "In a hypothetical multi-step reaction mechanism, an overall reaction occurs through a series of simpler, individual molecular events. The comprehensive description of these sequential individual steps, outlining the precise sequence of bond breaking and forming, is known as what?",
+        options: [
+            "The overall stoichiometry.",
+            "The kinetic profile.",
+            "The thermodynamic pathway.",
+            "The reaction mechanism."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Reaction Mechanism', defining it as the complete sequence of elementary steps that describes the overall reaction."
+    },
+    {
+        question: "During a multi-step reaction, a particular chemical species is transiently formed in one elementary step and subsequently entirely consumed in a later elementary step, without appearing in the final balanced chemical equation. This type of species is best classified as which of the following?",
+        options: [
+            "A reaction intermediate.",
+            "A catalyst.",
+            "A product.",
+            "A reactant."
+        ],
+        correctAnswer: 0,
+        reasoning: "This is mentioned in textbook theory under 'Reaction Intermediates', defining them as chemical species produced in one elementary step and consumed in a subsequent step, not appearing in the overall balanced chemical equation."
+    },
+    {
+        question: "Within a reaction mechanism composed of several elementary steps, one specific step proceeds at a significantly slower pace compared to all others. This particular step holds paramount importance for the entire reaction as it fundamentally dictates the maximum achievable speed of the overall transformation. This step is termed the:",
+        options: [
+            "Initiation step.",
+            "Termination step.",
+            "Rate Determining Step (RDS).",
+            "Propagation step."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Rate Determining Step (RDS)', defining it as the slowest elementary step in a reaction mechanism and stating that the overall rate of the complete reaction is determined by the rate of this slowest step."
+    },
+    {
+        question: "Considering the energetic landscape of a multi-step reaction, the rate-determining step is invariably associated with a distinct energetic feature. Among all elementary steps within the mechanism, which characteristic is typically observed for the rate-determining step?",
+        options: [
+            "It involves the largest number of reactant molecules.",
+            "It possesses the highest activation energy.",
+            "It results in the greatest decrease in potential energy.",
+            "It is associated with the most favorable equilibrium constant."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Rate Determining Step (RDS)', stating that the RDS typically has the highest activation energy among all elementary steps."
+    },
+    {
+        question: "The molecularity of an elementary reaction, which quantifies the number of species participating in a single collision event, is inherently limited in its possible values. Which of the following accurately describes the permissible numerical values for molecularity?",
+        options: [
+            "It can be zero or a negative integer.",
+            "It can be fractional or greater than three.",
+            "It can only be determined experimentally for the overall reaction.",
+            "It must be a positive integer, typically one, two, or three."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Molecularity', stating it cannot be zero, must be a positive integer (typically 1, 2, or 3 for unimolecular, bimolecular, or termolecular reactions)."
+    },
+    {
+        question: "The primary distinction between the concept of molecularity and the experimentally derived reaction order lies in their applicability and nature. Molecularity specifically describes an attribute of which type of reaction?",
+        options: [
+            "An elementary step within a mechanism.",
+            "The overall balanced chemical reaction.",
+            "A reaction at its equilibrium state.",
+            "A reversible reaction in an isolated system."
+        ],
+        correctAnswer: 0,
+        reasoning: "This is mentioned in textbook theory under 'Molecularity', emphasizing that molecularity applies to elementary steps, while reaction order is an experimental value for the overall reaction."
+    },
+    {
+        question: "A reaction system is found to proceed at a particular rate. If the concentrations of all reactants are uniformly doubled, and the reaction rate is observed to quadruple, this specific relationship suggests a particular overall dependence on reactant concentrations. What is the overall order of this reaction?",
+        options: [
+            "Zero order.",
+            "First order.",
+            "Second order.",
+            "Third order."
+        ],
+        correctAnswer: 2,
+        reasoning: "This requires conceptual application of reaction order. If doubling concentration quadruples the rate (2^x = 4, so x = 2), this means the rate is proportional to the concentration squared, indicating a second-order reaction. This aligns with the definition of reaction order in textbook theory."
+    },
+    {
+        question: "An industrial process aims to accelerate a certain gas-phase reaction. One proposed modification involves replacing a large, singular lump of a solid catalyst with an equivalent mass of the same catalyst, but in the form of a fine powder. This change is intended to primarily enhance the reaction rate by increasing which specific physical parameter?",
+        options: [
+            "The internal energy of the catalyst.",
+            "The available contact area between the catalyst and reactants.",
+            "The thermal conductivity of the catalyst.",
+            "The total volumetric space occupied by the catalyst."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Particle Size of a Solid Reacting in Heterogeneous Reactions', which states that smaller particles (like fine powder) provide a greater total surface area exposed for reaction, increasing contact points and thus the rate."
+    },
+    {
+        question: "Consider a reaction for which the rate law is determined to be Rate = k[A][B]. If the concentration of reactant A is halved while the concentration of reactant B is kept constant, what will be the immediate effect on the initial rate of the reaction?",
+        options: [
+            "The rate will double.",
+            "The rate will remain unchanged.",
+            "The rate will decrease to one-fourth of its original value.",
+            "The rate will be halved."
+        ],
+        correctAnswer: 3,
+        reasoning: "This requires conceptual understanding of reaction order as mentioned in textbook theory. Since the reaction is first order with respect to A (exponent is 1), halving [A] will directly halve the rate."
+    },
+    {
+        question: "In a particular reaction involving the decomposition of a substance, the rate law is found to be Rate = k. This implies that the rate of this decomposition is entirely independent of the reactant's concentration. Such a reaction is characterized by which specific order?",
+        options: [
+            "First order.",
+            "Second order.",
+            "Zero order.",
+            "Third order."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Order of Reaction', where Rate = k[A]^m[B]^n. If the rate is simply k, it means the concentration terms have exponents of zero, making it a zero-order reaction overall. This aligns with the definition of zero-order kinetics."
+    },
+    {
+        question: "The rate constant 'k' for a given reaction is observed to increase as the temperature of the system is raised. This temperature dependence of 'k' primarily reflects the influence of temperature on which fundamental energetic requirement for reaction occurrence?",
+        options: [
+            "The overall standard free energy change.",
+            "The equilibrium constant of the reaction.",
+            "The activation energy barrier.",
+            "The bond dissociation energies of reactants."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Rate Constant (k)', stating that 'k' increases with temperature. The increase in temperature allows more molecules to overcome the activation energy barrier, thus increasing the effective collision frequency and the rate constant. This links 'k' to activation energy indirectly, as the primary effect of temperature on rate is via increasing effective collisions (which means overcoming Ea)."
+    },
+    {
+        question: "When comparing an exothermic reaction with an endothermic reaction, both proceeding through a single transition state, the potential energy diagram provides a clear visual distinction. For an exothermic reaction, what characteristic relationship exists between the potential energy of the reactants and that of the products?",
+        options: [
+            "Products have higher potential energy than reactants.",
+            "Reactants and products have identical potential energy.",
+            "Reactants have higher potential energy than products.",
+            "The relationship is dependent on the activation energy."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Exothermic vs. Endothermic Reactions', stating that for exothermic reactions, reactants have higher potential energy than products."
+    },
+    {
+        question: "The concept of 'instantaneous rate' is crucial for understanding the dynamic nature of chemical reactions. This rate specifically refers to the speed of a reaction at which particular point in time?",
+        options: [
+            "The average speed over the entire reaction duration.",
+            "The rate observed at the midpoint of the reaction.",
+            "The precise rate at a single, specific moment.",
+            "The maximum rate achieved at the very beginning of the reaction."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Instantaneous vs. Average Rate', defining instantaneous rate as measured over a very small time interval (dx/dt), representing the rate at a particular instant."
+    },
+    {
+        question: "Consider a situation where a chemist is attempting to decompose a stable compound thermally. They find that adding a small amount of manganese dioxide significantly speeds up the decomposition process, and the manganese dioxide remains chemically unaltered throughout. This is an illustration of a process where a substance influences reaction kinetics by acting as what?",
+        options: [
+            "A reaction intermediate.",
+            "A reactant.",
+            "A solvent.",
+            "A catalyst."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Presence or Absence of a Catalyst', with manganese dioxide catalyzing the thermal decomposition of potassium chlorate as an example. A catalyst increases reaction rate without being consumed."
+    },
+    {
+        question: "The overall order of a complex reaction involving multiple elementary steps can sometimes appear fractional. This phenomenon indicates that the dependence of the reaction rate on reactant concentrations does not necessarily conform to simple whole-number stoichiometry. Which property of reaction order does this exemplify?",
+        options: [
+            "Its inherent limitation to integer values.",
+            "Its mandatory alignment with molecularity.",
+            "Its ability to be non-integer.",
+            "Its independence from experimental determination."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Order of Reaction', stating that it 'Can be zero, first, second, third, or even fractional'."
+    },
+    {
+        question: "A potential energy diagram illustrates the energy profile of a reaction, including the difference in potential energy between reactants and products. If the products are depicted at a higher potential energy level than the reactants, this visually signifies a reaction where energy is absorbed from the surroundings. This type of reaction is classified as what?",
+        options: [
+            "Exothermic.",
+            "Spontaneous.",
+            "Endothermic.",
+            "Catalyzed."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Exothermic vs. Endothermic Reactions', stating that for endothermic reactions, reactants have lower potential energy than products, and the overall energy difference (ΔH) is positive (energy is absorbed)."
+    },
+    {
+        question: "For a unimolecular elementary reaction, which involves a single reactant molecule undergoing rearrangement, what is its molecularity?",
+        options: [
+            "Zero.",
+            "Two.",
+            "One.",
+            "Three."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Molecularity', where it is defined as the number of reacting species in a single elementary reaction. Unimolecular reactions have a molecularity of one."
+    },
+    {
+        question: "In the general rate law expression, Rate = k[A]^m[B]^n, the exponents 'm' and 'n' specifically denote the order of the reaction with respect to individual reactants A and B, respectively. What does the sum of these exponents (m+n) represent?",
+        options: [
+            "The overall stoichiometry of the reaction.",
+            "The molecularity of the rate-determining step.",
+            "The total number of bonds broken in the reaction.",
+            "The overall order of the reaction."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Order of Reaction', defining it as the sum of the exponents (powers) of the concentration terms in the rate expression (m+n)."
+    },
+    {
+        question: "Photosynthesis, a vital biological process, exemplifies a class of reactions where external energy absorption by molecules is a prerequisite for their activation and subsequent reaction. Which specific category of reactions does photosynthesis fall under due to its dependency on this form of energy?",
+        options: [
+            "Redox reactions.",
+            "Photochemical reactions.",
+            "Precipitation reactions.",
+            "Acid-base reactions."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Light (Photochemical Reactions)', where photosynthesis is given as an example of a reaction influenced by the absorption of light energy, activating reactant molecules."
+    },
+    {
+        question: "The rate constant 'k' for a particular reaction has units of dm³ mol⁻¹ s⁻¹. Based on this dimensional analysis, what is the overall order of the reaction?",
+        options: [
+            "Zero order.",
+            "First order.",
+            "Second order.",
+            "Third order."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Units of k', explicitly stating that for second order, the units are dm³ mol⁻¹ s⁻¹."
+    },
+    {
+        question: "A fundamental difference exists between molecularity and reaction order. Unlike reaction order, which is experimentally derived, molecularity is restricted to describing which specific aspect of a chemical process?",
+        options: [
+            "The spontaneity of the overall reaction.",
+            "The balanced stoichiometry of the overall reaction.",
+            "The composition of the activated complex.",
+            "The single collision events within an elementary step."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Molecularity', defining it as the number of reacting species that must collide simultaneously in a *single elementary reaction*."
+    },
+    {
+        question: "Increasing the concentration of reactants generally leads to an increase in the reaction rate. The underlying molecular explanation for this phenomenon is that a greater number of reactant particles per unit volume results in which of the following?",
+        options: [
+            "A decrease in the activation energy.",
+            "A reduction in the energy required for bond breaking.",
+            "More frequent molecular collisions.",
+            "An increase in the kinetic energy of individual molecules."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Concentration of Reactants', explaining that a higher concentration means more active particles per unit volume, leading to more frequent collisions and thus a faster reaction."
+    },
+    {
+        question: "For the gaseous reaction 2NO + O₂ → 2NO₂, the experimentally determined rate law is Rate = k[NO]²[O₂]. What is the overall order of this reaction?",
+        options: [
+            "First order.",
+            "Second order.",
+            "Third order.",
+            "Zero order."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Order of Reaction', providing this exact example and stating its overall order as third (2+1 = 3)."
+    },
+    {
+        question: "The rate constant 'k' for a chemical reaction maintains a fixed value under specific conditions. Which of the following conditions must be held constant for 'k' to retain its characteristic value for a particular reaction?",
+        options: [
+            "The initial concentrations of all reactants.",
+            "The surface area of solid reactants.",
+            "The temperature and pressure of the system.",
+            "The presence or absence of light."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Rate Constant (k)', stating that 'k' has a fixed value for a given reaction at a specific temperature and pressure."
+    },
+    {
+        question: "A catalyst functions by altering the pathway of a reaction. This alteration specifically affects which energetic characteristic, thereby allowing the reaction to proceed faster?",
+        options: [
+            "The average kinetic energy of reactant molecules.",
+            "The enthalpy change of the overall reaction.",
+            "The energy barrier to reach the transition state.",
+            "The vibrational energy levels of reactant bonds."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is implicitly mentioned in textbook theory under 'Presence or Absence of a Catalyst', stating catalysts increase reaction rate and their mechanism (implicit) is to lower the activation energy, which is defined as the energy barrier to reach the transition state."
+    },
+    {
+        question: "The decomposition of N₂O₅ is cited as an example of a first-order reaction. For such a reaction, how is the rate directly proportional to the concentration of the reactant?",
+        options: [
+            "To the square of its concentration.",
+            "To the inverse of its concentration.",
+            "Directly to its concentration raised to the power of one.",
+            "To its concentration raised to the power of zero."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Examples' for First Order reactions, stating Rate ∝ [A], which means directly proportional to the concentration raised to the power of one."
+    },
+    {
+        question: "In collision theory, the 'minimum collision energy' required for a reaction to occur corresponds precisely to which key energetic parameter of the reaction?",
+        options: [
+            "The standard enthalpy of formation of products.",
+            "The activation energy.",
+            "The overall Gibbs free energy change.",
+            "The bond dissociation energy of the weakest reactant bond."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Activation Energy (Ea)', stating it is also the minimum collision energy required for a reaction to occur, and under 'Collision Theory', stating a 'minimum collision energy (Ea)' is required."
+    },
+    {
+        question: "The concept of 'reaction intermediates' is central to understanding multi-step mechanisms. A defining characteristic of a reaction intermediate is that it does not appear in which particular chemical representation?",
+        options: [
+            "The rate law.",
+            "The reaction mechanism sequence.",
+            "The overall balanced chemical equation.",
+            "The potential energy diagram."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Reaction Intermediates', stating they do not appear in the overall balanced chemical equation."
+    },
+    {
+        question: "Radioactive decay processes, such as the decay of Ra-226, are often used as classic examples of a specific kinetic behavior. These processes invariably follow which particular order of reaction?",
+        options: [
+            "Second order.",
+            "Zero order.",
+            "Third order.",
+            "First order."
+        ],
+        correctAnswer: 3,
+        reasoning: "This is mentioned in textbook theory under 'Examples' for First Order reactions, explicitly listing radioactive decay of Ra-226."
+    },
+    {
+        question: "The rate of a chemical reaction is defined as the change in concentration of a reactant or product per unit time. This rate is always expressed as a positive value. For a product, how does its concentration change over time, and how is this reflected in its rate expression?",
+        options: [
+            "Concentration decreases, and a negative sign is applied.",
+            "Concentration remains constant, so no sign is needed.",
+            "Concentration increases, and the rate expression is inherently positive.",
+            "Concentration fluctuates, requiring an absolute value function."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Rate of Reaction', stating that for products, Rate = Δ[Product]/Δt (positive as product concentration increases)."
+    },
+    {
+        question: "The thermal decomposition of hydrogen iodide (HI) is an example of a reaction where its rate is proportional to the square of its concentration. This specific concentration dependence classifies it under which reaction order?",
+        options: [
+            "First order.",
+            "Third order.",
+            "Second order.",
+            "Zero order."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is mentioned in textbook theory under 'Examples' for Second Order reactions, explicitly listing thermal decomposition of HI and stating its rate ∝ [A]²."
+    },
+    {
+        question: "In a reaction mechanism with several elementary steps, the overall rate of the reaction is governed by the rate-determining step. This principle implies that speeding up any step other than the slowest one will have what effect on the overall reaction rate?",
+        options: [
+            "It will significantly accelerate the overall reaction rate.",
+            "It will have a proportional effect on the overall rate.",
+            "It will have little to no effect on the overall reaction rate.",
+            "It will only affect the yield of intermediates, not the overall rate."
+        ],
+        correctAnswer: 2,
+        reasoning: "This is a conceptual implication of the 'Rate Determining Step (RDS)' as mentioned in textbook theory. If the slowest step determines the overall rate, speeding up any faster step will not make the overall reaction faster, as the slowest step remains the bottleneck."
+    },
+    {
+        question: "When considering the factors affecting reaction rates, the difference in reactivity between burning wood in pure oxygen versus ordinary air is a vivid illustration. This example primarily highlights the impact of which specific factor?",
+        options: [
+            "The nature of the reactants.",
+            "The concentration of reactants.",
+            "The temperature of the system.",
+            "The particle size of the solid fuel."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Concentration of Reactants', providing the example of wood burning faster in pure oxygen (100% O2) than in ordinary air (21% O2) to illustrate the effect of concentration."
+    },
+    {
+        question: "For a termolecular elementary reaction, three reactant species must simultaneously collide to initiate the chemical transformation. What is the molecularity of such a reaction?",
+        options: [
+            "One.",
+            "Three.",
+            "Two.",
+            "Zero."
+        ],
+        correctAnswer: 1,
+        reasoning: "This is mentioned in textbook theory under 'Molecularity', stating that for termolecular reactions, the molecularity is three, meaning three reacting species must collide simultaneously."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Chemistry ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-CHE-0011';
+let quizData = quizData_WCW_CHE_0011;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-CHE-0011', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-CHE-0011', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-CHE-0011', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_CHE_0011;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_CHE_0011;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_CHE_0011[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_CHE_0011.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
